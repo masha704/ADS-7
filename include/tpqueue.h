@@ -31,7 +31,7 @@ typename TPQueue<T>::ITEM *TPQueue<T>::create(const T& value) {
   ITEM * temp = new ITEM;
   temp->value = value;
   temp->next = nullptr;
-  temp->prev = nullptr;
+  temp->prew = nullptr;
   return temp;
 }
 
@@ -62,7 +62,7 @@ void TPQueue <T>::push(const T& data) {
 
 template<typename T>
 T TPQueue<T>::pop() {
-  if (haed && tail) {
+  if (head && tail) {
     ITEM* temp = head->next;
     if (temp) {
       temp->prew = nullptr;
