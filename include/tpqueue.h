@@ -29,9 +29,9 @@ struct SYM {
 template<typename T>
 typename TPQueue<T>::ITEM *TPQueue<T>::create(const T& value) {
   ITEM * temp = new ITEM;
-  item->value = value;
-  item->next = nullptr;
-  item->prev = nullptr;
+  temp->value = value;
+  temp->next = nullptr;
+  temp->prev = nullptr;
   return temp;
 }
 
@@ -44,19 +44,19 @@ void TPQueue <T>::push(const T& data) {
   }
   if (!temp && head) {
     tail ->next = item;
-    item->ptev = tail;
+    item->prew = tail;
     tail = item;
-  } else if (!temp && !haed) {
+  } else if (!temp && !head) {
     head = tail = item;
-  } else if (!temp->prev) {
-    head->prev = item;
+  } else if (!temp->prew) {
+    head->prew = item;
     item->next = head;
     head = item;
   } else {
-    temp->prev->next = item;
-    item->prev = temp->prev;
+    temp->prew->next = item;
+    item->prew = temp->prew;
     item->next = temp;
-    temp->prev = item;
+    temp->prew = item;
   }
 }
 
@@ -65,7 +65,7 @@ T TPQueue<T>::pop() {
   if (haed && tail) {
     ITEM* temp = head->next;
     if (temp) {
-      temp->prev = nullptr;
+      temp->prew = nullptr;
     }
     T data = head->value;
     delete head;
