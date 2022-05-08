@@ -6,11 +6,11 @@
 template<typename T>
 class TPQueue {
   // реализация шаблона очереди с приоритетом на связанном списке
-    public:
+ public:
       TPQueue(): head(nullptr), tail(nullptr) {}
       void push(const T&);
       T pop();
-    private:
+ private:
       struct ITEM {
           T value;
           ITEM *next;
