@@ -27,7 +27,7 @@ struct SYM {
 };
 
 template<typename T>
-typename TPQueue<T>:: ITEM *TPQueue <T> create(const T& value) {
+typename TPQueue<T>::ITEM *TPQueue<T>::create(const T& value) {
   ITEM * temp = new ITEM;
   item->value = value;
   item->next = nullptr;
@@ -35,9 +35,10 @@ typename TPQueue<T>:: ITEM *TPQueue <T> create(const T& value) {
   return temp;
 }
 
-void TPQueue <T>:: push(const T& data) {
+template<typename T>
+void TPQueue <T>::push(const T& data) {
   ITEM *temp = head;
-  ITEM* item = create(value);
+  ITEM* item = create(data);
   while (temp && temp->value.prior >= data.prior) {
     temp = temp->next;
   }
