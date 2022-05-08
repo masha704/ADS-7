@@ -6,11 +6,11 @@
 template<typename T>
 class TPQueue {
   // реализация шаблона очереди с приоритетом на связанном списке
-  public:
-      TPQueue(): head(nullptr), tail(nullptr){}
-      void push (const T&);
+    public:
+      TPQueue(): head(nullptr), tail(nullptr) {}
+      void push(const T&);
       T pop();
-  private:
+    private:
       struct ITEM {
           T value;
           ITEM *next;
@@ -27,7 +27,7 @@ struct SYM {
 };
 
 template<typename T>
-typename TPQueue<T>:: ITEM *TPQueue <T> create( const T& value) {
+typename TPQueue<T>:: ITEM *TPQueue <T> create(const T& value) {
   ITEM * temp = new ITEM;
   item->value = value;
   item->next = nullptr;
@@ -38,14 +38,14 @@ typename TPQueue<T>:: ITEM *TPQueue <T> create( const T& value) {
 void TPQueue <T>:: push(const T& data) {
   ITEM *temp = head;
   ITEM* item = create(value);
-  while(temp && temp->value.prior >= data.prior) {
+  while (temp && temp->value.prior >= data.prior) {
     temp = temp->next;
   }
   if (!temp && head) {
     tail ->next = item;
-    item->ptev=tail;
-    tail=item;
-  } else if(!temp && !haed) {
+    item->ptev = tail;
+    tail = item;
+  } else if (!temp && !haed) {
     head = tail = item;
   } else if (!temp->prev) {
     head->prev = item;
@@ -61,20 +61,20 @@ void TPQueue <T>:: push(const T& data) {
 
 template<typename T>
 T TPQueue<T>::pop() {
-  if(haed && tail) {
+  if (haed && tail) {
     ITEM* temp = head->next;
-    if(temp) {
+    if (temp) {
       temp->prev = nullptr;
     }
     T data = head->value;
     delete head;
     head = temp;
-    if(!head){
+    if (!head) {
       tail = nullptr;
     }
     return data;
   } else {
-    throw std::string ("Is Empty!");
+    throw std::string("Is Empty!");
   }
 }
 
